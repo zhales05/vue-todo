@@ -68,10 +68,10 @@ the console is painful, so let's create a dynamic list.
 In `index.html`, add the following right after the `h1` tag:
 
 ```
-      <form v-on:submit.prevent="addItem">
-	      <input type="text" v-model="message">
-      	<button type="submit">Add</button>
-      </form>
+    <form v-on:submit.prevent="addItem">
+      <input type="text" v-model="message">
+      <button type="submit">Add</button>
+    </form>
 ```
 
 This creates a form using standard HTML, with some Vue attributes
@@ -127,7 +127,7 @@ It's not much good having a todo list unless we can check items off the list.
 Modify your `index.html` so that a check box displays in front of each item:
 
 ```
-	  <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
+    <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
     <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
 ```
 
@@ -167,7 +167,7 @@ It's great to check off items, but sometimes you want to delete items
 off your list. Let's add a delete button next to each item in `index.html`:
 
 ```
-	  <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
+    <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
     <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
     <button v-on:click="deleteItem(item)" class="delete">X</button>
 ```
@@ -180,9 +180,9 @@ To make this work, add another method in `script.js`, after `completeItem`:
 
 ```
     deleteItem: function(item) {
-      var index = this.todos.indexOf(item);
-      if (index > -1)
-	      this.todos.splice(index,1);
+    var index = this.todos.indexOf(item);
+    if (index > -1)
+      this.todos.splice(index,1);
     },
 ```
 
@@ -201,7 +201,7 @@ that displays when the list is empty. Put this right after the `h1` tag
 in `index.html`:
 
 ```
-      <p v-show="activeTodos.length === 0">You are done with all your tasks! Good job!</p>
+    <p v-show="activeTodos.length === 0">You are done with all your tasks! Good job!</p>
 ```
 
 To make this work, we need to add a [computed
@@ -214,7 +214,7 @@ completed). You should put this in between the `data` and the
   computed: {
     activeTodos: function() {
       return this.todos.filter(function(item) {
-	      return !item.completed;
+        return !item.completed;
       });
     },
 ```
@@ -237,12 +237,12 @@ Add some buttons to `index.html` that handle these actions, right between the `f
 the `ol`.
 
 ```
-      <div class="controls">
-	      <button v-on:click="showAll()">Show All</button>
-	      <button v-on:click="showActive()">Show Active</button>
-	      <button v-on:click="showCompleted()">Show Completed</button>
-	      <button v-on:click="deleteCompleted()">Delete Completed</button>
-      </div>
+    <div class="controls">
+      <button v-on:click="showAll()">Show All</button>
+      <button v-on:click="showActive()">Show Active</button>
+      <button v-on:click="showCompleted()">Show Completed</button>
+      <button v-on:click="deleteCompleted()">Delete Completed</button>
+    </div>
 ```
 
 In addition, change the `li` tag so it looks like this:
@@ -304,13 +304,13 @@ screen. You should put this after the `activeTodos` computed property:
 ```
     filteredTodos: function() {
       if (this.show === 'active')
-	      return this.todos.filter(function(item) {
-	        return !item.completed;
-	      });
+        return this.todos.filter(function(item) {
+         return !item.completed;
+        });
       if (this.show === 'completed')
-	      return this.todos.filter(function(item) {
-	        return item.completed;
-	      });
+        return this.todos.filter(function(item) {
+          return item.completed;
+         });
       return this.todos;
     },
 ```
