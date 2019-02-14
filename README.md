@@ -101,8 +101,8 @@ Next, add the following after the `data` declaration in `script.js`:
 
 ```
   methods: {
-    addItem: function() {
-      this.todos.push({text: this.message,completed:false});
+    addItem() {
+      this.todos.push({text: this.message, completed:false});
       this.message = '';
     },
   }
@@ -151,7 +151,7 @@ attributes. We also add an attribute to the label.
 To make this work, add another method in `script.js`, after `addItem`:
 
 ```
-    completeItem: function(item) {
+    completeItem(item) {
       item.completed = !item.completed;
     },
 ```
@@ -179,7 +179,7 @@ triggered for the button. We pass the current `item` to this method.
 To make this work, add another method in `script.js`, after `completeItem`:
 
 ```
-    deleteItem: function(item) {
+    deleteItem(item) {
     var index = this.todos.indexOf(item);
     if (index > -1)
       this.todos.splice(index,1);
@@ -212,8 +212,8 @@ completed). You should put this in between the `data` and the
 
 ```
   computed: {
-    activeTodos: function() {
-      return this.todos.filter(function(item) {
+    activeTodos() {
+      return this.todos.filter(item => {
         return !item.completed;
       });
     },
@@ -277,17 +277,17 @@ We will need to make a number of changes to `script.js`. First, add a
 For the buttons, add the following methods:
 
 ```
-    showAll: function() {
+    showAll() {
       this.show = 'all';
     },
-    showActive: function() {
+    showActive() {
       this.show = 'active';
     },
-    showCompleted: function() {
+    showCompleted() {
       this.show = 'completed';
     },
-    deleteCompleted: function() {
-      this.todos = this.todos.filter(function(item) {
+    deleteCompleted() {
+      this.todos = this.todos.filter(item => {
       	return !item.completed;
       });
     },
@@ -302,13 +302,13 @@ to compute the subset of todo items that will be shown on the
 screen. You should put this after the `activeTodos` computed property:
 
 ```
-    filteredTodos: function() {
+    filteredTodos() {
       if (this.show === 'active')
-        return this.todos.filter(function(item) {
+        return this.todos.filter(item => {
          return !item.completed;
         });
       if (this.show === 'completed')
-        return this.todos.filter(function(item) {
+        return this.todos.filter(item => {
           return item.completed;
          });
       return this.todos;
@@ -365,12 +365,12 @@ To make this work in `script.js`, first add a `drag` property to the
 Then add these methods at the end of your method list:
 
 ```
-    dragItem: function(item) {
+    dragItem(item) {
       this.drag = item;
     },
-    dropItem: function(item) {
-      var indexItem = this.todos.indexOf(this.drag);
-      var indexTarget = this.todos.indexOf(item);
+    dropItem(item) {
+      const indexItem = this.todos.indexOf(this.drag);
+      const indexTarget = this.todos.indexOf(item);
       this.todos.splice(indexItem,1);
       this.todos.splice(indexTarget,0,this.drag);
     },
