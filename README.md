@@ -98,7 +98,16 @@ To make this work, modify the Vue data in `script.js` to read:
 
 ```
   data: {
-    todos: [],
+    todos: [{
+      text: "make an app",
+      completed: false,
+    }, {
+      text: "declare victory",
+      completed: false,
+    }, {
+      text: "profit",
+      completed: false
+    }],
     message: '',
   },
 ```
