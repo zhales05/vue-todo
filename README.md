@@ -272,7 +272,16 @@ We will need to make a number of changes to `script.js`. First, add a
 
 ```
   data: {
-    todos: [],
+    todos: [{
+      text: "make an app",
+      completed: false,
+    }, {
+      text: "declare victory",
+      completed: false,
+    }, {
+      text: "profit",
+      completed: false
+    }],
     message: '',
     show: 'all',
   },
@@ -359,7 +368,7 @@ To make this work in `script.js`, first add a `drag` property to the
 
 ```
   data: {
-    todos: [],
+    ...
     message: '',
     show: 'all',
     drag: {},
