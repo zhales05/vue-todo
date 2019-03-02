@@ -238,7 +238,7 @@ are completed, or only those that are _not_ completed. We might also like to
 delete all the completed items at once.
 
 Add some buttons to `index.html` that handle these actions, right between the `form` and
-the `ol`.
+the `ul`.
 
 ```
     <div class="controls">
