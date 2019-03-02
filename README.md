@@ -145,7 +145,7 @@ It's not much good having a todo list unless we can check items off the list.
 Modify your `index.html` so that a check box displays in front of each item:
 
 ```
-    <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
+    <input type="checkbox" v-model="item.completed"/>
     <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
 ```
 
@@ -157,24 +157,10 @@ attributes. We also add an attribute to the label.
    when we need to redraw the list, the box will only be checked if the
    item is actually completed.
 
-1. We use `v-on` to tell Vue that if the click event is triggered for
-   the check box, it should call the `completeItem` method and pass this
-   method the item object.
-
 1. We use `v-bind` to tell Vue that the class attribute should incude
    a `completed` class that is bound to the value of `completed` on the
    item property. If you look in `style.css`, you will see that the
    `completed` class will make the item appear crossed out.
-
-To make this work, add another method in `script.js`, after `addItem`:
-
-```
-    completeItem(item) {
-      item.completed = !item.completed;
-    },
-```
-
-This method simply toggles the boolean `completed` property on the item.
 
 You should now be able to check items off your list and have them show
 as crossed out when they are completed.
@@ -185,7 +171,7 @@ It's great to check off items, but sometimes you want to delete items
 off your list. Let's add a delete button next to each item in `index.html`:
 
 ```
-    <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
+    <input type="checkbox" v-model="item.completed"/>
     <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
     <button v-on:click="deleteItem(item)" class="delete">X</button>
 ```
