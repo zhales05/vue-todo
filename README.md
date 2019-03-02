@@ -184,9 +184,9 @@ To make this work, add another method in `script.js`, after `completeItem`:
 
 ```
     deleteItem(item) {
-    var index = this.todos.indexOf(item);
-    if (index > -1)
-      this.todos.splice(index,1);
+      var index = this.todos.indexOf(item);
+      if (index > -1)
+        this.todos.splice(index,1);
     },
 ```
 
