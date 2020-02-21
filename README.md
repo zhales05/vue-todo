@@ -9,7 +9,9 @@ Inside your cloned repository, start up a Python server to view the
 site in your browser:
 
 ```
-python -m SimpleHTTPServer
+python3 -m http.server
+# or
+python2 -m SimpleHTTPServer
 ```
 
 You can navigate to `localhost:8000` to see the site.
@@ -28,7 +30,7 @@ Start with this in the `body`:
       </li>
     </ul>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="/script.js"></script>
 </body>
 ```
